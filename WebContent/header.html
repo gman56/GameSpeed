@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>GameSpeed</title>
+<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"> </script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
+
+
+<script type = "text/javascript">
+          function displayNextImage() {
+              x = (x === images.length - 1) ? 0 : x + 1;
+              document.getElementById("img").src = images[x];
+          }
+
+          function displayPreviousImage() {
+              x = (x <= 0) ? images.length - 1 : x - 1;
+              document.getElementById("img").src = images[x];
+          }
+
+          function startTimer() {
+              setInterval(displayNextImage, 3000);
+          }
+
+          var images = [], x = -1;
+          images[0] = "images/PS4promo.jpg";
+          images[1] = "images/WiiPromo.jpg";
+          images[2] = "images/xboxPromo.jpg";
+          
+          
+          
+          
+          function uploadFile() {
+        	    var blobFile = $('#filechooser')[0].files[0];
+        	    var fd = new FormData();
+        	    fd.append("fileToUpload", blobFile);
+
+        	    $.ajax({
+        	       url: "upload.php",
+        	       type: "POST",
+        	       data: fd,
+        	       processData: false,
+        	       contentType: false,
+        	       success: function(response) {
+        	           // .. do something
+        	       },
+        	       error: function(jqXHR, textStatus, errorMessage) {
+        	           console.log(errorMessage); // Optional
+        	       }
+        	    });
+        	}
+          
+         
+          $(document).ready(function() {
+              $(function() {
+                      $("#search").autocomplete({     
+                      source : function(request, response) {
+                      $.ajax({
+                              url : "autocomplete",
+                              type : "GET",
+                              data : {
+                                      term : request.term
+                              },
+                              dataType : "json",
+                              success : function(data) {
+                                      response(data);
+                              }
+                      });
+              }
+      });
+      });
+      });
+
+          
+          
+        
+          
+          
+          
+</script>
+
+
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--
+pied, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
+
+Download: http://zypopwebtemplates.com/
+
+License: Creative Commons Attribution
+//-->
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body onload="startTimer()">
+<div id="container">
+    <header>
+	<div class="width">
+    		<h1><a href="Home">GameSpeed</a></h1>
+       	</div> 
+		
+		
+		<form method="post" action="autocomplete">
+            <div class="search-container" style="float: right; width: 30%; margin-top: -75px; border: 1px solid white; padding: 5px; padding-right: 15px">
+               	<div class="ui-widget">
+                <label for="text1">Search for Product: </label>
+				<input type="text" id="search" name="search" class="search"/>
+				</div>
+            </div>
+        </form>
+
+		
+			
+    </header>
+    <nav>
+	<div class="width">
+	
+	
+	
+	<div class="top">
+    		<ul>
+        		<li>
+        		<div class="dropdown">
+  				<button class="dropbtn">Xbox</button>
+  				<div class="dropdown-content">
+   				 <a href="XboxConsoleList?maker=microsoft">Game Systems</a>
+   				 <a href="GamesList?maker=microsoft">Games</a>
+ 				 </div>
+				</div>
+        		</li>
+         	   	
+          	  	<li>
+        		<div class="dropdown2">
+  				<button class="dropbtn2">PlayStation</button>
+  				<div class="dropdown-content2">
+   				 <a href="PlaystationConsoleList?maker=sony">Game Systems</a>
+   				 <a href="GamesList?maker=sony">Games</a>
+ 				 </div>
+				</div>
+        		</li>
+        		
+        		 	<li>
+        		<div class="dropdown3">
+  				<button class="dropbtn3">Nintendo</button>
+  				<div class="dropdown-content3">
+   				 <a href="NintendoConsoleList?maker=nintendo">Game Systems</a>
+   				 <a href="GamesList?maker=nintendo">Games</a>
+ 				 </div>
+				</div>
+        		</li>
+   <!--    		
+        		 	<li>
+        		<div class="dropdown4">
+  				<button class="dropbtn4">PS4</button>
+  				<div class="dropdown-content4">
+   				 <a href="#">Game System</a>
+   				 <a href="#">Games</a>
+   				 <a href="#">Accessories</a>
+ 				 </div>
+				</div>
+        		</li>
+        		
+        			<li>
+        		<div class="dropdown5">
+  				<button class="dropbtn5">Wii</button>
+  				<div class="dropdown-content5">
+   				 <a href="#">Game System</a>
+   				 <a href="#">Games</a>
+   				 <a href="#">Accessories</a>
+ 				 </div>
+				</div>
+        		</li>
+
+        			<li>
+        		<div class="dropdown6">
+  				<button class="dropbtn6">Wii-U</button>
+  				<div class="dropdown-content6">
+   				 <a href="#">Game System</a>
+   				 <a href="#">Games</a>
+   				 <a href="#">Accessories</a>
+ 				 </div>
+				</div>
+        		</li>
+       -->    		
+        		
+        	
+        		
+        		
+        		
+          	  	
+        
